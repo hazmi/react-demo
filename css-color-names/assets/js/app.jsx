@@ -45,8 +45,8 @@ App.ColorApp = (function(){
         },
         getInitialState: function() {
             return {
-                data: this.props.colors,
-                displayCount: this.props.colors.length,
+                data: [],
+                displayCount: 0,
                 order: 'date',
                 searchKeyword: ''
             };
@@ -58,6 +58,10 @@ App.ColorApp = (function(){
                 '/name': setState.bind(this, {order: 'name'})
             });
             router.init('/date');
+            this.setState({
+                data: this.props.colors,
+                displayCount: this.props.colors.length
+            });
         },
         getColorListStyle: function(){
             var numColumn = Math.ceil(this.state.displayCount / App.MAX_ROW);
